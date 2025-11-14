@@ -16,13 +16,13 @@ type CommentWrapper = {
   data: RedditComment;
 };
 
-type Replies = {
-  kind: "Listing";
-  data: {
-    dist: 0;
-    children: CommentWrapper[];
-  };
-};
+// type Replies = {
+//   kind: "Listing";
+//   data: {
+//     dist: 0;
+//     children: CommentWrapper[];
+//   };
+// };
 
 export class ArcticShift {
   static readonly base = "https://arctic-shift.photon-reddit.com";
@@ -62,10 +62,13 @@ export class ArcticShift {
     const result = [];
     for (const comment of replies) {
       result.push(comment.data);
-      if (comment.data.replies) {
-        result.push(
-          ...ArcticShift.flattenTree(comment.data.replies.data.children)
-        );
+
+      // TODO: Rework this
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const replies: any = comment.data.replies;
+
+      if (replies) {
+        result.push(...ArcticShift.flattenTree(replies.data.children));
       }
     }
     return result;
