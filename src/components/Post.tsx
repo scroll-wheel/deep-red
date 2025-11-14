@@ -1,19 +1,22 @@
-import { type RedditPost } from '@/arctic-shift/RS';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
-import { Avatar, AvatarFallback } from '@/components/ui/avatar';
-import RFM from '@/components/Markdown';
+import { type RedditPost } from "@/arctic-shift/RS";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import RFM from "@/components/Markdown";
 import {
   ArrowBigDown,
   ArrowBigUp,
   Award,
   MessageCircle,
   Share,
-} from 'lucide-react';
+} from "lucide-react";
 
-import { cn, formatDate } from '@/lib/utils';
+import { cn, formatDate, webArchive } from "@/lib/utils";
+import { Gallery } from "@/components/Gallery";
+import { type Source, Image, type Media } from "@/lib/media";
+import { NavLink } from "react-router";
 
-type CrosspostParent = NonNullable<RedditPost['crosspost_parent_list']>[number];
+type CrosspostParent = NonNullable<RedditPost["crosspost_parent_list"]>[number];
 
 function convert(c: CrosspostParent): RedditPost {
   const result: any = c;
@@ -22,33 +25,6 @@ function convert(c: CrosspostParent): RedditPost {
   }
   return result;
 }
-
-type Source = {
-  url: string;
-  width: number;
-  height: number;
-};
-
-type Image = {
-  media: 'image';
-  sources: Source[];
-
-  caption: string | null;
-};
-
-type Video = {
-  media: 'video';
-  poster: Image | null;
-  hls_url: string;
-  dash_url: string;
-  fallback_url: string;
-  height: number;
-  width: number;
-
-  caption: string | null;
-};
-
-type Media = Image | Video;
 
 class NormalizedPost {
   readonly author: string;
@@ -65,17 +41,17 @@ class NormalizedPost {
   readonly subreddit: string;
   readonly thumbnail: Source | null;
   readonly title: string;
-  readonly url: string | null;
+  readonly url: URL | null;
 
   is_crosspost_parent: boolean;
 
   constructor(rp: RedditPost) {
-    if (typeof rp.subreddit === 'undefined') {
-      throw new Error('undefined subreddit');
+    if (typeof rp.subreddit === "undefined") {
+      throw new Error("undefined subreddit");
     }
 
-    if (typeof rp.created_utc === 'string' && isNaN(parseInt(rp.created_utc))) {
-      throw new Error('created_utc is not a number');
+    if (typeof rp.created_utc === "string" && isNaN(parseInt(rp.created_utc))) {
+      throw new Error("created_utc is not a number");
     }
 
     // TODO: Addition doesn't work...
@@ -85,7 +61,7 @@ class NormalizedPost {
     {
       const reddit_video = rp.media?.reddit_video;
       if (
-        typeof reddit_video !== 'undefined' &&
+        typeof reddit_video !== "undefined" &&
         reddit_video.hls_url &&
         reddit_video.dash_url &&
         reddit_video.fallback_url &&
@@ -93,7 +69,7 @@ class NormalizedPost {
         reddit_video.width
       ) {
         media.push({
-          media: 'video',
+          media: "video",
           caption: null,
           poster: null,
           hls_url: reddit_video.hls_url,
@@ -107,9 +83,9 @@ class NormalizedPost {
 
     // Video from .preview.reddit_video_preview
     const reddit_video_preview = rp.preview?.reddit_video_preview;
-    if (typeof reddit_video_preview !== 'undefined') {
+    if (typeof reddit_video_preview !== "undefined") {
       media.push({
-        media: 'video',
+        media: "video",
         caption: null,
         poster: null,
         hls_url: reddit_video_preview.hls_url,
@@ -124,93 +100,90 @@ class NormalizedPost {
     for (const video of media) {
       const images = rp.preview?.images;
       if (
-        video.media === 'video' &&
-        typeof images !== 'undefined' &&
+        video.media === "video" &&
+        typeof images !== "undefined" &&
         images.length !== 0
       ) {
-        video.poster = {
-          media: 'image',
-          sources: images[0].resolutions,
-          caption: null,
-        };
+        video.poster = new Image(
+          [images[0].source].concat(images[0].resolutions)
+        );
       }
     }
 
-    // Images .gallery_data and .media_metadata
-    if (rp.gallery_data && rp.media_metadata) {
-      media.concat(
-        rp.gallery_data.items
-          .filter(
-            (item) =>
-              item.media_id in rp.media_metadata! &&
-              rp.media_metadata![item.media_id].status === 'valid'
-          )
-          .map((item) => {
-            const metadata = rp.media_metadata![item.media_id];
-            const sources: Source[] = [];
+    if (media.length === 0) {
+      // Images .gallery_data and .media_metadata
+      if (rp.gallery_data && rp.media_metadata) {
+        media.push(
+          ...rp.gallery_data.items
+            .filter(
+              (item) =>
+                item.media_id in rp.media_metadata! &&
+                rp.media_metadata![item.media_id].status === "valid"
+            )
+            .map((item) => {
+              const metadata = rp.media_metadata![item.media_id];
+              const sources: Source[] = [];
 
-            if (metadata.m !== 'image/gif') {
-              sources.concat(
-                metadata.p
-                  ? metadata.p.map((source) => {
-                      return {
-                        url: source.u,
-                        width: source.x,
-                        height: source.y,
-                      };
-                    })
-                  : []
-              );
-            }
-
-            if (metadata.s) {
-              if (metadata.s.gif) {
-                sources.push({
-                  url: metadata.s.gif,
-                  width: metadata.s.x,
-                  height: metadata.s.y,
-                });
-              } else if (metadata.s.u) {
-                sources.push({
-                  url: metadata.s.u,
-                  width: metadata.s.x,
-                  height: metadata.s.y,
-                });
+              if (metadata.m !== "image/gif") {
+                sources.push(
+                  ...(metadata.p
+                    ? metadata.p.map((source) => {
+                        return {
+                          url: source.u,
+                          width: source.x,
+                          height: source.y,
+                        };
+                      })
+                    : [])
+                );
               }
-            }
 
-            return {
-              media: 'image',
-              sources,
-              caption: item.caption ? item.caption : null,
-            };
-          })
-      );
-    }
+              if (metadata.s) {
+                if (metadata.s.gif) {
+                  sources.push({
+                    url: metadata.s.gif,
+                    width: metadata.s.x,
+                    height: metadata.s.y,
+                  });
+                } else if (metadata.s.u) {
+                  sources.push({
+                    url: metadata.s.u,
+                    width: metadata.s.x,
+                    height: metadata.s.y,
+                  });
+                }
+              }
 
-    // Images from .preview
-    if (
-      rp.preview &&
-      (typeof rp.preview.enabled === 'undefined' || rp.preview.enabled)
-    ) {
-      media.concat(
-        rp.preview.images.map((image) => {
-          return {
-            media: 'image',
-            sources: image.variants.gif
-              ? image.variants.gif.resolutions
-              : image.resolutions,
-            caption: null,
-          };
-        })
-      );
+              return new Image(sources, item.caption ? item.caption : null);
+            })
+        );
+      }
+
+      // Images from .preview
+      if (
+        rp.preview &&
+        (typeof rp.preview.enabled === "undefined" || rp.preview.enabled)
+      ) {
+        media.push(
+          ...rp.preview.images.map(
+            (image) =>
+              new Image(
+                image.variants.gif
+                  ? [image.variants.gif.source].concat(
+                      image.variants.gif.resolutions
+                    )
+                  : [image.source].concat(image.resolutions)
+              )
+          )
+        );
+      }
     }
 
     const thumbnail =
       rp.thumbnail_width &&
       rp.thumbnail_height &&
       rp.thumbnail &&
-      rp.thumbnail !== 'nsfw'
+      rp.thumbnail !== "nsfw"
         ? {
             url: rp.thumbnail,
             width: rp.thumbnail_width,
@@ -218,14 +191,24 @@ class NormalizedPost {
           }
         : null;
 
-    this.author = rp.author || '[deleted]';
+    this.author = rp.author || "[deleted]";
     this.created_utc = new Date(+rp.created_utc * 1000);
-    this.crosspost_parent = rp.crosspost_parent_list
-      ? new NormalizedPost(convert(rp.crosspost_parent_list[0]))
-      : null;
+    this.crosspost_parent =
+      rp.crosspost_parent_list && rp.crosspost_parent_list.length !== 0
+        ? new NormalizedPost(convert(rp.crosspost_parent_list[0]))
+        : null;
     this.id = rp.id;
     this.link_flair_text = rp.link_flair_text;
-    this.media = media;
+    this.media = media
+      .filter(
+        (media) => !(media.media === "image" && media.sources.length === 0)
+      )
+      .map((media) => {
+        if (media.media === "video" && media.poster?.sources.length === 0) {
+          media.poster = null;
+        }
+        return media;
+      });
     this.num_comments = rp.num_comments;
     this.over_18 = rp.over_18;
     this.permalink = rp.permalink;
@@ -234,7 +217,10 @@ class NormalizedPost {
     this.subreddit = rp.subreddit!;
     this.title = rp.title;
     this.thumbnail = thumbnail;
-    this.url = rp.url && !rp.url.includes(rp.permalink) ? rp.url : null;
+    this.url =
+      !this.crosspost_parent && rp.url && !rp.url.includes(rp.permalink)
+        ? new URL(rp.url)
+        : null;
 
     this.is_crosspost_parent = false;
     if (this.crosspost_parent) {
@@ -244,11 +230,11 @@ class NormalizedPost {
 }
 
 function Post({
-  post,
+  data: post,
   preview,
   show_subreddit,
 }: {
-  post: RedditPost;
+  data: RedditPost;
   preview: boolean;
   show_subreddit: boolean;
 }) {
@@ -259,8 +245,21 @@ function Post({
   });
 }
 
+function href(post: NormalizedPost): string {
+  if (post.url!.hostname.endsWith("gfycat.com")) {
+    return webArchive(post.url!, post.created_utc);
+  }
+  if (post.url!.hostname.endsWith("i.reddituploads.com")) {
+    return webArchive(post.url!, post.created_utc);
+  }
+  if (post.over_18 && post.url!.hostname.endsWith("imgur.com")) {
+    return webArchive(post.url!, post.created_utc);
+  }
+  return post.url!.toString();
+}
+
 function PostHelper({
-  post,
+  post: p,
   preview,
   show_subreddit,
 }: {
@@ -268,23 +267,21 @@ function PostHelper({
   preview: boolean;
   show_subreddit: boolean;
 }) {
-  const p = post;
-
-  return (
+  const article = (
     <article
       className={cn(
-        'relative',
-        p.is_crosspost_parent ? 'bg-card rounded-xl border' : 'my-4'
+        "relative hover:bg-ghost",
+        p.is_crosspost_parent ? "bg-card rounded-xl border" : "my-4"
       )}
     >
       <header
-        className={cn('debug mb-1.5', p.is_crosspost_parent && 'p-4 pb-1.5')}
+        className={cn("debug mb-1.5", p.is_crosspost_parent && "p-4 pb-1.5")}
       >
         {p.is_crosspost_parent ? (
           <div className="text-sm">
-            r/{p.subreddit}{' '}
+            r/{p.subreddit}{" "}
             <span className="text-muted-foreground">
-              {' '}
+              {" "}
               · {formatDate(p.created_utc)}
             </span>
           </div>
@@ -316,9 +313,9 @@ function PostHelper({
       </header>
       <section
         className={cn(
-          'my-1.5',
-          preview && 'line-clamp-6',
-          p.is_crosspost_parent && 'px-4'
+          "my-1.5",
+          preview && "line-clamp-6",
+          p.is_crosspost_parent && "px-4"
         )}
       >
         {p.crosspost_parent ? (
@@ -327,51 +324,68 @@ function PostHelper({
             preview={preview}
             show_subreddit={show_subreddit}
           />
-        ) : p.media ? (
-          <div>TODO: Media</div>
+        ) : p.media.length ? (
+          <Gallery media={p.media} />
+        ) : p.url ? (
+          <a
+            target="_blank"
+            className="relative z-1 flex justify-between"
+            href={href(p)}
+          >
+            <span className="line-clamp-1">{p.url.toString()}</span>
+            {p.thumbnail && <img loading="lazy" src={p.thumbnail.url} alt="" />}
+          </a>
+        ) : p.selftext && preview ? (
+          <div>{p.selftext}</div>
         ) : (
-          p.url && (
-            <a className="relative z-1 flex justify-between" href={p.url}>
-              <span className="line-clamp-1">{p.url}</span>
-              {p.thumbnail && (
-                <img loading="lazy" src={p.thumbnail.url} alt="" />
-              )}
-            </a>
-          )
+          <></>
         )}
-
-        {/* TODO: Logic for when to render this... */}
-        {p.selftext &&
-          (preview ? <div>{p.selftext}</div> : <RFM plaintext={p.selftext} />)}
+        {p.selftext && !preview && <RFM plaintext={p.selftext} />}
       </section>
       <footer>
         {p.is_crosspost_parent ? (
-          <div className="text-muted-foreground text-sm">
+          <div className="text-muted-foreground text-sm mx-4 my-3">
             {p.score} upvotes · {p.num_comments} comments
           </div>
         ) : (
           <>
-            <Button variant="secondary" className="rounded-full">
+            <Button variant="secondary" className="rounded-full mr-2">
               <ArrowBigUp />
               {p.score}
               <ArrowBigDown />
             </Button>
-            <Button variant="secondary" className="rounded-full">
+            <Button variant="secondary" className="rounded-full mr-2">
               <MessageCircle />
               {p.num_comments}
             </Button>
-            <Button variant="secondary" className="rounded-full">
+            <Button variant="secondary" className="rounded-full mr-2">
               <Award />
             </Button>
-            <Button variant="secondary" className="rounded-full">
+            <Button variant="secondary" className="rounded-full mr-2">
               <Share />
               Share
             </Button>
           </>
         )}
       </footer>
-      {preview && <a href="#" className="comments absolute inset-0"></a>}
+      {(preview || p.is_crosspost_parent) && (
+        <NavLink
+          to={p.permalink}
+          className={cn(
+            "comments absolute inset-0",
+            p.is_crosspost_parent ? "z-1" : ""
+          )}
+        ></NavLink>
+      )}
     </article>
+  );
+  return preview && !p.is_crosspost_parent ? (
+    <>
+      {article}
+      <hr />
+    </>
+  ) : (
+    article
   );
 }
 

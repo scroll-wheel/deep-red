@@ -1,7 +1,7 @@
-import { type RedditComment } from '@/arctic-shift/RC';
-import { Button } from '@/components/ui/button';
+import { type RedditComment } from "@/arctic-shift/RC";
+import { Button } from "@/components/ui/button";
 
-import { useState } from 'react';
+import { useState } from "react";
 
 import {
   CirclePlus,
@@ -11,11 +11,11 @@ import {
   Award,
   MessageCircle,
   Share,
-} from 'lucide-react';
+} from "lucide-react";
 
-import RFM from '@/components/Markdown';
+import RFM from "@/components/Markdown";
 
-import { cn, formatDate } from '@/lib/utils';
+import { formatDate } from "@/lib/utils";
 
 class NormalizedComment {
   readonly author: string;
@@ -30,15 +30,15 @@ class NormalizedComment {
   responses: NormalizedComment[];
 
   constructor(rc: RedditComment) {
-    if (typeof rc.created_utc === 'string' && isNaN(parseInt(rc.created_utc))) {
-      throw new Error('created_utc is not a number');
+    if (typeof rc.created_utc === "string" && isNaN(parseInt(rc.created_utc))) {
+      throw new Error("created_utc is not a number");
     }
 
     this.author = rc.author;
     this.body = rc.body;
     this.created_utc = new Date(+rc.created_utc * 1000);
     this.edited =
-      typeof rc.edited === 'number' ? new Date(rc.edited * 1000) : null;
+      typeof rc.edited === "number" ? new Date(rc.edited * 1000) : null;
     this.id = rc.id;
     this.is_submitter = !!rc.is_submitter;
     this.parent_id = rc.parent_id;
@@ -50,7 +50,7 @@ class NormalizedComment {
     comments.sort((a, b) => a.created_utc.getTime() - b.created_utc.getTime());
 
     for (let i = comments.length - 1; i >= 0; i--) {
-      if (comments[i].parent_id.startsWith('t3_')) {
+      if (comments[i].parent_id.startsWith("t3_")) {
         continue;
       }
       for (let j = i - 1; j >= 0; j--) {
@@ -82,32 +82,33 @@ class NormalizedComment {
   // Search Comments
 }
 
-type ResponsesProps = {
-  comments: RedditComment[];
-  depth: number; // Don't recall makeForest when depth = 1...
-};
-
-function Comment(c: NormalizedComment) {
+function Comment({ data: c }: { data: NormalizedComment }) {
   const [collapsed, setCollapsed] = useState(false);
 
   return (
     <div className="grid grid-rows-[auto_1fr] grid-cols-[auto_1fr]">
       {/* TODO: Make this collapsible more brief */}
       {collapsed ? (
-        <CirclePlus className="s-full" onClick={() => setCollapsed(false)} />
+        <CirclePlus
+          className="s-full hover:cursor-pointer mb-2"
+          onClick={() => setCollapsed((c) => !c)}
+        />
       ) : (
-        <CircleMinus className="s-full" onClick={() => setCollapsed(true)} />
+        <CircleMinus
+          className="s-full hover:cursor-pointer"
+          onClick={() => setCollapsed((c) => !c)}
+        />
       )}
-      <header className="truncate">
+      <header className="truncate ml-1">
         <span className="font-medium">{c.author}</span>
         {c.is_submitter && <span className="text-primary"> OP</span>}
         <span className="text-muted-foreground">
-          {' '}
+          {" "}
           · {formatDate(c.created_utc)}
         </span>
       </header>
       <div className="mx-auto border-l-2 border-secondary"></div>
-      <div className={cn(collapsed && 'hidden')}>
+      <div className={collapsed ? "hidden" : "ml-1"}>
         <RFM plaintext={c.body} />
         <footer>
           <Button variant="ghost" className="rounded-full">
@@ -128,17 +129,17 @@ function Comment(c: NormalizedComment) {
             Share
           </Button>
         </footer>
-        {c.responses && Forest(c.responses)}
+        {c.responses && <Forest comments={c.responses} />}
       </div>
     </div>
   );
 }
 
-function Forest(forest: NormalizedComment[]) {
-  return forest ? (
+function Forest({ comments }: { comments: NormalizedComment[] }) {
+  return comments.length > 0 ? (
     <ul>
-      {forest.map((c) => (
-        <li key={c.id}>{Comment(c)}</li>
+      {comments.map((c) => (
+        <li key={c.id}>{<Comment data={c} />}</li>
       ))}
     </ul>
   ) : (
@@ -146,14 +147,10 @@ function Forest(forest: NormalizedComment[]) {
   );
 }
 
-// Renders comments
-function Responses({ comments }: ResponsesProps) {
-  // Should the caller makeForest? Or should we?
-  // makeForst shouldn't be exported...
-  const forest = comments.map((rc) => new NormalizedComment(rc));
-  NormalizedComment.makeForest(forest);
-  NormalizedComment.sortForest(forest, (a, b) => b.score - a.score);
-  return Forest(forest);
+// Why is this rerendered?
+export default function Responses({ data }: { data: RedditComment[] }) {
+  const comments = data.map((rc) => new NormalizedComment(rc));
+  NormalizedComment.makeForest(comments);
+  NormalizedComment.sortForest(comments, (a, b) => b.score - a.score);
+  return <Forest comments={comments} />;
 }
-
-export default Responses;

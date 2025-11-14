@@ -3,17 +3,17 @@ export interface RedditPost {
     corrupted_selftext?: string;
     edited_title?: string;
     is_edited?: boolean;
-    note?: 'no_2nd_retrieval' | 'initially_unavailable';
+    note?: "no_2nd_retrieval" | "initially_unavailable";
     removal_type?:
-      | 'deleted'
-      | 'moderator'
-      | 'reddit'
-      | 'automod_filtered'
-      | 'content_takedown'
-      | 'author'
-      | 'copyright_takedown'
-      | 'community_ops'
-      | 'anti_evil_ops';
+      | "deleted"
+      | "moderator"
+      | "reddit"
+      | "automod_filtered"
+      | "content_takedown"
+      | "author"
+      | "copyright_takedown"
+      | "community_ops"
+      | "anti_evil_ops";
     retrieved_2nd_on?: number;
     was_deleted_later?: boolean;
     was_initially_deleted?: boolean;
@@ -26,12 +26,12 @@ export interface RedditPost {
         ad_supplementary_text_md?: null;
         all_awardings: {
           award_sub_type:
-            | 'GLOBAL'
-            | 'PREMIUM'
-            | 'MODERATOR'
-            | 'APPRECIATION'
-            | 'COMMUNITY';
-          award_type: 'global' | 'moderator' | 'community';
+            | "GLOBAL"
+            | "PREMIUM"
+            | "MODERATOR"
+            | "APPRECIATION"
+            | "COMMUNITY";
+          award_type: "global" | "moderator" | "community";
           awardings_required_to_grant_benefits: null;
           coin_price: number;
           coin_reward: number;
@@ -41,7 +41,7 @@ export interface RedditPost {
           description: string;
           end_date: null;
           giver_coin_reward: null;
-          icon_format: 'PNG' | 'APNG' | null;
+          icon_format: "PNG" | "APNG" | null;
           icon_height: number;
           icon_url: string;
           icon_width: number;
@@ -67,7 +67,7 @@ export interface RedditPost {
           static_icon_width: number;
           sticky_duration_seconds: null;
           subreddit_coin_reward: number;
-          subreddit_id: null | 't5_2qtjz' | 't5_2qhta';
+          subreddit_id: null | "t5_2qtjz" | "t5_2qhta";
           tiers_by_required_awardings: null;
         }[];
         allow_live_comments: boolean;
@@ -78,52 +78,52 @@ export interface RedditPost {
         author_cakeday?: boolean;
         author_flair_background_color:
           | null
-          | ''
-          | 'transparent'
-          | '#dadada'
-          | '#ffb000'
-          | '#373c3f'
-          | '#23adf9'
-          | '#df73ff'
-          | '#94e044'
-          | '#0266b3'
-          | '#ff8717'
-          | '#c76c35'
-          | '#ff4500'
-          | '#1a1a1b'
-          | '#0c173e';
+          | ""
+          | "transparent"
+          | "#dadada"
+          | "#ffb000"
+          | "#373c3f"
+          | "#23adf9"
+          | "#df73ff"
+          | "#94e044"
+          | "#0266b3"
+          | "#ff8717"
+          | "#c76c35"
+          | "#ff4500"
+          | "#1a1a1b"
+          | "#0c173e";
         author_flair_css_class:
           | null
-          | 'zBowser'
-          | 'TheLeague1'
-          | 'ModJamieYoung'
-          | 'SHIELD1'
-          | 'OrphanBlack1'
-          | 'staff'
-          | '108'
-          | 'blueflair'
-          | 'logo'
-          | 'userflair';
+          | "zBowser"
+          | "TheLeague1"
+          | "ModJamieYoung"
+          | "SHIELD1"
+          | "OrphanBlack1"
+          | "staff"
+          | "108"
+          | "blueflair"
+          | "logo"
+          | "userflair";
         author_flair_richtext?: {
           a?:
-            | ':Bowser:'
-            | ':invincible3:'
-            | ':Chiefs:'
-            | ':Broncos:'
-            | ':robot2:'
-            | ':burgermarttrash:'
-            | ':dudeisawit:'
-            | ':snoo_dealwithit:'
-            | ':108:'
-            | ':Eagles:';
-          e: 'text' | 'emoji';
+            | ":Bowser:"
+            | ":invincible3:"
+            | ":Chiefs:"
+            | ":Broncos:"
+            | ":robot2:"
+            | ":burgermarttrash:"
+            | ":dudeisawit:"
+            | ":snoo_dealwithit:"
+            | ":108:"
+            | ":Eagles:";
+          e: "text" | "emoji";
           t?: string;
           u?: string;
         }[];
         author_flair_template_id: null | string;
         author_flair_text: null | string;
-        author_flair_text_color: null | 'dark' | 'light';
-        author_flair_type?: 'text' | 'richtext';
+        author_flair_text_color: null | "dark" | "light";
+        author_flair_type?: "text" | "richtext";
         author_fullname?: string;
         author_is_blocked: boolean;
         author_patreon_flair?: boolean;
@@ -136,24 +136,24 @@ export interface RedditPost {
         category: null;
         clicked: boolean;
         collections?: {
-          author_id: 't2_1ebjv3pj';
-          author_name: 'h0neybe8r';
-          collection_id: 'f5f1d3a0-a6cb-4173-be6c-8e92a17d5edd';
+          author_id: "t2_1ebjv3pj";
+          author_name: "h0neybe8r";
+          collection_id: "f5f1d3a0-a6cb-4173-be6c-8e92a17d5edd";
           created_at_utc: number;
           description: string;
-          display_layout: 'GALLERY';
+          display_layout: "GALLERY";
           last_update_utc: number;
           link_ids: string[];
           permalink: string;
-          subreddit_id: 't5_2rnvp';
-          title: 'Product Updates &amp; Announcements';
+          subreddit_id: "t5_2rnvp";
+          title: "Product Updates &amp; Announcements";
         }[];
         content_categories: null;
         contest_mode: boolean;
         created: number;
         created_utc: number;
         discussion_type: null;
-        distinguished: null | 'moderator' | 'admin';
+        distinguished: null | "moderator" | "admin";
         domain: string;
         downs: number;
         edited: boolean | number;
@@ -187,44 +187,44 @@ export interface RedditPost {
         link_flair_css_class: null | string;
         link_flair_richtext: {
           a?:
-            | ':Discussion:'
-            | ':Question:'
-            | ':Dive:'
-            | ':Camera:'
-            | ':619dda9a618eb:'
-            | ':Review:'
-            | ':Stacks:'
-            | ':Comparison:';
-          e: 'text' | 'emoji';
+            | ":Discussion:"
+            | ":Question:"
+            | ":Dive:"
+            | ":Camera:"
+            | ":619dda9a618eb:"
+            | ":Review:"
+            | ":Stacks:"
+            | ":Comparison:";
+          e: "text" | "emoji";
           t?: string;
           u?: string;
         }[];
         link_flair_template_id?: string;
         link_flair_text: null | string;
-        link_flair_text_color: 'dark' | 'light' | null;
-        link_flair_type: 'text' | 'richtext';
+        link_flair_text_color: "dark" | "light" | null;
+        link_flair_type: "text" | "richtext";
         locked: boolean;
         media: null | {
           oembed?: {
             author_name:
-              | 'Paramount Pictures'
-              | 'Lionsgate Movies'
-              | 'STARZ'
-              | 'Prime Video'
-              | 'The Tonight Show Starring Jimmy Fallon'
-              | 'Illumination'
-              | 'Matthew Heiskell';
+              | "Paramount Pictures"
+              | "Lionsgate Movies"
+              | "STARZ"
+              | "Prime Video"
+              | "The Tonight Show Starring Jimmy Fallon"
+              | "Illumination"
+              | "Matthew Heiskell";
             author_url: string;
             height: number;
             html: string;
-            provider_name: 'YouTube';
-            provider_url: 'https://www.youtube.com/';
+            provider_name: "YouTube";
+            provider_url: "https://www.youtube.com/";
             thumbnail_height: number;
             thumbnail_url: string;
             thumbnail_width: number;
             title: string;
-            type: 'video';
-            version: '1.0';
+            type: "video";
+            version: "1.0";
             width: number;
           };
           reddit_video?: {
@@ -237,10 +237,10 @@ export interface RedditPost {
             hls_url: string;
             is_gif: boolean;
             scrubber_media_url: string;
-            transcoding_status: 'completed';
+            transcoding_status: "completed";
             width: number;
           };
-          type?: 'youtube.com';
+          type?: "youtube.com";
         };
         media_embed: {
           content?: string;
@@ -250,9 +250,9 @@ export interface RedditPost {
         };
         media_metadata?: {
           [key: string]: {
-            e: 'Image';
+            e: "Image";
             id: string;
-            m: 'image/jpg' | 'image/png';
+            m: "image/jpg" | "image/png";
             o?: {
               u: string;
               x: number;
@@ -268,7 +268,7 @@ export interface RedditPost {
               x: number;
               y: number;
             };
-            status: 'valid';
+            status: "valid";
           };
         };
         media_only: boolean;
@@ -282,26 +282,26 @@ export interface RedditPost {
         num_crossposts: number;
         num_reports: null;
         over_18: boolean;
-        parent_whitelist_status?: 'all_ads' | 'no_ads' | null;
+        parent_whitelist_status?: "all_ads" | "no_ads" | null;
         permalink: string;
         pinned: boolean;
         poll_data?: {
           is_prediction: boolean;
           options: {
             id:
-              | '27442307'
-              | '27442308'
-              | '27442309'
-              | '27442310'
-              | '27442311'
-              | '27442312';
+              | "27442307"
+              | "27442308"
+              | "27442309"
+              | "27442310"
+              | "27442311"
+              | "27442312";
             text:
-              | 'Shilajit'
-              | 'L-Arginine + L-Citrulline together'
-              | 'Pregnenolone'
-              | 'N-Acetyl L-Tyrosine'
-              | 'Boron Glycinate'
-              | 'Cistanche tubulosa';
+              | "Shilajit"
+              | "L-Arginine + L-Citrulline together"
+              | "Pregnenolone"
+              | "N-Acetyl L-Tyrosine"
+              | "Boron Glycinate"
+              | "Cistanche tubulosa";
             vote_count: number;
           }[];
           prediction_status: null;
@@ -314,7 +314,7 @@ export interface RedditPost {
           vote_updates_remained: null;
           voting_end_timestamp: number;
         };
-        post_hint?: 'image' | 'link' | 'rich:video' | 'self' | 'hosted:video';
+        post_hint?: "image" | "link" | "rich:video" | "self" | "hosted:video";
         preview?: {
           enabled: boolean;
           images: {
@@ -357,24 +357,24 @@ export interface RedditPost {
         secure_media: null | {
           oembed?: {
             author_name:
-              | 'Paramount Pictures'
-              | 'Lionsgate Movies'
-              | 'STARZ'
-              | 'Prime Video'
-              | 'The Tonight Show Starring Jimmy Fallon'
-              | 'Illumination'
-              | 'Matthew Heiskell';
+              | "Paramount Pictures"
+              | "Lionsgate Movies"
+              | "STARZ"
+              | "Prime Video"
+              | "The Tonight Show Starring Jimmy Fallon"
+              | "Illumination"
+              | "Matthew Heiskell";
             author_url: string;
             height: number;
             html: string;
-            provider_name: 'YouTube';
-            provider_url: 'https://www.youtube.com/';
+            provider_name: "YouTube";
+            provider_url: "https://www.youtube.com/";
             thumbnail_height: number;
             thumbnail_url: string;
             thumbnail_width: number;
             title: string;
-            type: 'video';
-            version: '1.0';
+            type: "video";
+            version: "1.0";
             width: number;
           };
           reddit_video?: {
@@ -387,10 +387,10 @@ export interface RedditPost {
             hls_url: string;
             is_gif: boolean;
             scrubber_media_url: string;
-            transcoding_status: 'completed';
+            transcoding_status: "completed";
             width: number;
           };
-          type?: 'youtube.com';
+          type?: "youtube.com";
         };
         secure_media_embed: {
           content?: string;
@@ -407,10 +407,10 @@ export interface RedditPost {
           accept_followers: boolean;
           allow_chat_post_creation?: boolean;
           allowed_media_in_comments: (
-            | 'giphy'
-            | 'animated'
-            | 'static'
-            | 'expression'
+            | "giphy"
+            | "animated"
+            | "static"
+            | "expression"
           )[];
           banner_img: string;
           banner_size: null | number[];
@@ -425,28 +425,28 @@ export interface RedditPost {
           free_form_reports: boolean;
           header_img: string | null;
           header_size: null | number[];
-          icon_color: '';
+          icon_color: "";
           icon_img: string;
           icon_size: null | number[];
           is_chat_post_feature_enabled?: boolean;
           is_default_banner?: boolean;
           is_default_icon?: boolean;
           key_color:
-            | ''
-            | '#ea0027'
-            | '#0079d3'
-            | '#ff8717'
-            | '#24a0ed'
-            | '#545452'
-            | '#222222'
-            | '#ff4500'
-            | '#a5a4a4'
-            | '#ddbd37';
+            | ""
+            | "#ea0027"
+            | "#0079d3"
+            | "#ff8717"
+            | "#24a0ed"
+            | "#545452"
+            | "#222222"
+            | "#ff4500"
+            | "#a5a4a4"
+            | "#ddbd37";
           link_flair_enabled: boolean;
-          link_flair_position: 'left' | 'right' | '' | null;
+          link_flair_position: "left" | "right" | "" | null;
           name: string;
           over_18: boolean;
-          previous_names: ('japanesetattoo' | 'a:t5_3aiie')[];
+          previous_names: ("japanesetattoo" | "a:t5_3aiie")[];
           primary_color: string;
           public_description: string;
           quarantine: boolean;
@@ -454,25 +454,25 @@ export interface RedditPost {
           restrict_posting: boolean;
           show_media: boolean;
           submit_link_label:
-            | ''
-            | 'Submit link'
-            | 'Submit a Link Post'
-            | 'Submit a link'
-            | 'Share a URL'
-            | 'SUBMIT LINK'
-            | 'new terminal link'
-            | 'Dish up a link!';
+            | ""
+            | "Submit link"
+            | "Submit a Link Post"
+            | "Submit a link"
+            | "Share a URL"
+            | "SUBMIT LINK"
+            | "new terminal link"
+            | "Dish up a link!";
           submit_text_label:
-            | ''
-            | 'Submit text'
-            | 'Submit content'
-            | 'Submit a Text Post'
-            | 'Submit a new post'
-            | 'Start a Text Discussion'
-            | 'SUBMIT TEXT'
-            | 'new log entry'
-            | 'Write about StupidFood';
-          subreddit_type: 'public' | 'user' | 'restricted';
+            | ""
+            | "Submit text"
+            | "Submit content"
+            | "Submit a Text Post"
+            | "Submit a new post"
+            | "Start a Text Discussion"
+            | "SUBMIT TEXT"
+            | "new log entry"
+            | "Write about StupidFood";
+          subreddit_type: "public" | "user" | "restricted";
           subscribers: number;
           title: string;
           url: string;
@@ -487,13 +487,13 @@ export interface RedditPost {
         subreddit_id: string;
         subreddit_name_prefixed: string;
         subreddit_subscribers: number;
-        subreddit_type: 'public' | 'user' | 'restricted';
-        suggested_sort: null | 'new' | 'top' | 'qa' | 'confidence';
+        subreddit_type: "public" | "user" | "restricted";
+        suggested_sort: null | "new" | "top" | "qa" | "confidence";
         thumbnail: string;
         thumbnail_height: number | null;
         thumbnail_width: number | null;
         title: string;
-        top_awarded_type: null | 'INACTIVE';
+        top_awarded_type: null | "INACTIVE";
         total_awards_received: number;
         treatment_tags: [];
         ups: number;
@@ -503,7 +503,7 @@ export interface RedditPost {
         user_reports: [];
         view_count: null;
         visited: boolean;
-        whitelist_status?: 'all_ads' | 'no_ads' | null;
+        whitelist_status?: "all_ads" | "no_ads" | null;
         wls: number | null;
       }[];
   ad_supplementary_text_md?: null | string;
@@ -512,14 +512,14 @@ export interface RedditPost {
   adserver_imp_pixel?: null;
   all_awardings?: {
     award_sub_type?:
-      | 'GLOBAL'
-      | 'APPRECIATION'
-      | 'PREMIUM'
-      | 'COMMUNITY'
-      | 'MODERATOR'
-      | 'GROUP'
-      | 'CHAT_REACTION';
-    award_type: 'global' | 'community' | 'moderator';
+      | "GLOBAL"
+      | "APPRECIATION"
+      | "PREMIUM"
+      | "COMMUNITY"
+      | "MODERATOR"
+      | "GROUP"
+      | "CHAT_REACTION";
+    award_type: "global" | "community" | "moderator";
     awardings_required_to_grant_benefits?: null | number;
     coin_price: number;
     coin_reward: number;
@@ -529,7 +529,7 @@ export interface RedditPost {
     description: string | null;
     end_date?: null | number;
     giver_coin_reward?: null | number;
-    icon_format?: null | 'PNG' | 'APNG' | 'JPG';
+    icon_format?: null | "PNG" | "APNG" | "JPG";
     icon_height: number;
     icon_url: string;
     icon_width: number;
@@ -560,7 +560,7 @@ export interface RedditPost {
       [key: string]: {
         awardings_required: number;
         icon: {
-          format: 'APNG' | 'PNG';
+          format: "APNG" | "PNG";
           height: number;
           url: string;
           width: number;
@@ -597,23 +597,23 @@ export interface RedditPost {
   author_flair_css_class: null | string;
   author_flair_richtext?: {
     a?: string;
-    e: 'text' | 'emoji';
+    e: "text" | "emoji";
     t?: string;
     u?: string;
   }[];
   author_flair_template_id?: null | string;
   author_flair_text: null | string;
-  author_flair_text_color?: null | 'dark' | 'light' | '';
-  author_flair_type?: 'text' | 'richtext';
+  author_flair_text_color?: null | "dark" | "light" | "";
+  author_flair_type?: "text" | "richtext";
   author_fullname?: string | null;
   author_id?: string | null;
   author_is_blocked?: boolean;
   author_patreon_flair?: boolean;
   author_premium?: boolean;
   awarders?: [];
-  ban_note?: null | 'reinforce spam';
+  ban_note?: null | "reinforce spam";
   banned_at_utc?: null;
-  banned_by?: null | 'aphexcoil' | 'NorthboundFox';
+  banned_by?: null | "aphexcoil" | "NorthboundFox";
   brand_safe?: boolean;
   call_to_action?: string | null;
   campaign_id?: null;
@@ -627,7 +627,7 @@ export interface RedditPost {
     collection_id: string;
     created_at_utc: number;
     description?: string | null;
-    display_layout?: null | 'GALLERY' | 'TIMELINE';
+    display_layout?: null | "GALLERY" | "TIMELINE";
     last_update_utc: number;
     link_ids: string[];
     permalink?: string;
@@ -648,12 +648,12 @@ export interface RedditPost {
       primary_color: string;
       sr: string;
       sr_display_name_prefixed: string;
-      subreddit_type: 'public' | 'restricted';
+      subreddit_type: "public" | "restricted";
       subscribers: number;
       title: string;
       url: string;
       user_can_crosspost: boolean | null;
-      whitelist_status: 'all_ads' | 'some_ads' | 'no_ads' | null;
+      whitelist_status: "all_ads" | "some_ads" | "no_ads" | null;
     };
     subreddit_id: string;
     title: string;
@@ -661,15 +661,15 @@ export interface RedditPost {
   content_categories?:
     | null
     | (
-        | 'gaming'
-        | 'photography'
-        | 'entertainment'
-        | 'drawing_and_painting'
-        | 'videos'
-        | 'music'
-        | 'diy_and_crafts'
-        | 'comics'
-        | 'writing'
+        | "gaming"
+        | "photography"
+        | "entertainment"
+        | "drawing_and_painting"
+        | "videos"
+        | "music"
+        | "diy_and_crafts"
+        | "comics"
+        | "writing"
       )[];
   contest_mode?: boolean;
   created?: number;
@@ -678,14 +678,14 @@ export interface RedditPost {
   crosspost_parent_list?: {
     all_awardings?: {
       award_sub_type?:
-        | 'GLOBAL'
-        | 'COMMUNITY'
-        | 'MODERATOR'
-        | 'APPRECIATION'
-        | 'PREMIUM'
-        | 'GROUP'
-        | 'CHAT_REACTION';
-      award_type: 'global' | 'community' | 'moderator';
+        | "GLOBAL"
+        | "COMMUNITY"
+        | "MODERATOR"
+        | "APPRECIATION"
+        | "PREMIUM"
+        | "GROUP"
+        | "CHAT_REACTION";
+      award_type: "global" | "community" | "moderator";
       awardings_required_to_grant_benefits?: null | number;
       coin_price: number;
       coin_reward: number;
@@ -695,7 +695,7 @@ export interface RedditPost {
       description: string | null;
       end_date?: null | number;
       giver_coin_reward?: null | number;
-      icon_format?: null | 'JPG' | 'PNG' | 'APNG';
+      icon_format?: null | "JPG" | "PNG" | "APNG";
       icon_height: number;
       icon_url: string;
       icon_width: number;
@@ -726,7 +726,7 @@ export interface RedditPost {
         [key: string]: {
           awardings_required: number;
           icon: {
-            format: 'APNG' | 'PNG';
+            format: "APNG" | "PNG";
             height: number;
             url: string;
             width: number;
@@ -760,14 +760,14 @@ export interface RedditPost {
     author_flair_css_class: null | string;
     author_flair_richtext?: {
       a?: string;
-      e: 'text' | 'emoji';
+      e: "text" | "emoji";
       t?: string;
       u?: string;
     }[];
     author_flair_template_id?: null | string;
     author_flair_text: null | string;
-    author_flair_text_color?: null | 'dark' | 'light' | '';
-    author_flair_type?: 'text' | 'richtext';
+    author_flair_text_color?: null | "dark" | "light" | "";
+    author_flair_type?: "text" | "richtext";
     author_fullname?: string;
     author_is_blocked?: boolean;
     author_patreon_flair?: boolean;
@@ -777,20 +777,20 @@ export interface RedditPost {
     banned_by: null;
     brand_safe?: boolean;
     call_to_action?:
-      | ''
-      | 'Shop Now'
-      | 'Learn More'
-      | 'Sign Up'
-      | 'Download'
-      | 'Install'
-      | 'Play Now'
-      | 'View More'
-      | 'Watch Now'
-      | 'Apply Now'
-      | 'Get Showtimes'
-      | 'Contact Us'
-      | 'See Menu'
-      | 'Get a Quote';
+      | ""
+      | "Shop Now"
+      | "Learn More"
+      | "Sign Up"
+      | "Download"
+      | "Install"
+      | "Play Now"
+      | "View More"
+      | "Watch Now"
+      | "Apply Now"
+      | "Get Showtimes"
+      | "Contact Us"
+      | "See Menu"
+      | "Get a Quote";
     can_gild: boolean | null;
     can_mod_post: boolean;
     category?: null | string;
@@ -801,7 +801,7 @@ export interface RedditPost {
       collection_id: string;
       created_at_utc: number;
       description?: string | null;
-      display_layout?: null | 'GALLERY' | 'TIMELINE';
+      display_layout?: null | "GALLERY" | "TIMELINE";
       last_update_utc: number;
       link_ids: string[];
       permalink: string;
@@ -816,28 +816,28 @@ export interface RedditPost {
         icon_img: string;
         icon_size: null | number[];
         key_color:
-          | ''
-          | '#46d160'
-          | '#545452'
-          | '#222222'
-          | '#7e53c1'
-          | '#ea0027'
-          | '#ddbd37'
-          | '#0079d3'
-          | '#ff8717'
-          | '#24a0ed';
+          | ""
+          | "#46d160"
+          | "#545452"
+          | "#222222"
+          | "#7e53c1"
+          | "#ea0027"
+          | "#ddbd37"
+          | "#0079d3"
+          | "#ff8717"
+          | "#24a0ed";
         mod_permissions: [];
         name: string;
         over_18: boolean;
         primary_color: string;
         sr: string;
         sr_display_name_prefixed: string;
-        subreddit_type: 'public' | 'restricted';
+        subreddit_type: "public" | "restricted";
         subscribers: number;
         title: string;
         url: string;
         user_can_crosspost: boolean | null;
-        whitelist_status: 'all_ads' | 'some_ads' | 'no_ads' | null;
+        whitelist_status: "all_ads" | "some_ads" | "no_ads" | null;
       };
       subreddit_id: string;
       title: string;
@@ -845,21 +845,21 @@ export interface RedditPost {
     content_categories?:
       | null
       | (
-          | 'diy_and_crafts'
-          | 'photography'
-          | 'gaming'
-          | 'drawing_and_painting'
-          | 'comics'
-          | 'entertainment'
-          | 'music'
-          | 'videos'
-          | 'writing'
+          | "diy_and_crafts"
+          | "photography"
+          | "gaming"
+          | "drawing_and_painting"
+          | "comics"
+          | "entertainment"
+          | "music"
+          | "videos"
+          | "writing"
         )[];
     contest_mode: boolean;
     created: number;
     created_utc: number;
-    discussion_type?: null | 'CHAT';
-    distinguished: null | 'moderator' | 'admin';
+    discussion_type?: null | "CHAT";
+    distinguished: null | "moderator" | "admin";
     domain: string | null;
     downs: number;
     edited: boolean | number;
@@ -869,7 +869,7 @@ export interface RedditPost {
     gallery_data?: {
       items: {
         caption?: string;
-        display_url?: 'bestbuy.com';
+        display_url?: "bestbuy.com";
         id: number;
         media_id: string;
         outbound_url?: string;
@@ -898,20 +898,20 @@ export interface RedditPost {
     link_flair_css_class: null | string;
     link_flair_richtext?: {
       a?: string;
-      e: 'text' | 'emoji';
+      e: "text" | "emoji";
       t?: string;
       u?: string;
     }[];
     link_flair_template_id?: string | null;
     link_flair_text: null | string;
-    link_flair_text_color?: 'dark' | 'light' | null;
-    link_flair_type?: 'text' | 'richtext';
+    link_flair_text_color?: "dark" | "light" | null;
+    link_flair_type?: "text" | "richtext";
     live_audio?: {
       is_live: boolean;
-      recording_dash_url?: '';
+      recording_dash_url?: "";
       recording_duration_seconds?: number;
       recording_fallback_url?: string;
-      recording_hls_url?: '';
+      recording_hls_url?: "";
       recording_status?: number;
       room_id: string;
       room_status?: number;
@@ -935,9 +935,9 @@ export interface RedditPost {
         thumbnail_url?: string;
         thumbnail_width?: number | null;
         title?: string;
-        type?: 'video' | 'rich';
+        type?: "video" | "rich";
         url?: string;
-        version?: '1.0';
+        version?: "1.0";
         width?: number;
       };
       reddit_video?: {
@@ -951,7 +951,7 @@ export interface RedditPost {
         is_gif?: boolean;
         scrubber_media_url?: string;
         transcoding_message?: string;
-        transcoding_status: 'completed' | 'error';
+        transcoding_status: "completed" | "error";
         width?: number | null;
       };
       type?: string;
@@ -967,11 +967,11 @@ export interface RedditPost {
     media_metadata?: null | {
       [key: string]: {
         dashUrl?: string;
-        e?: 'Image' | 'RedditVideo' | 'AnimatedImage';
+        e?: "Image" | "RedditVideo" | "AnimatedImage";
         hlsUrl?: string;
         id?: string;
         isGif?: boolean;
-        m?: 'image/jpg' | 'image/png' | 'image/gif' | 'image/jpeg';
+        m?: "image/jpg" | "image/png" | "image/gif" | "image/jpeg";
         o?: {
           u: string;
           x: number;
@@ -989,7 +989,7 @@ export interface RedditPost {
           x: number;
           y: number;
         };
-        status: 'valid' | 'failed' | 'unprocessed';
+        status: "valid" | "failed" | "unprocessed";
         x?: number;
         y?: number;
       };
@@ -1006,14 +1006,14 @@ export interface RedditPost {
     num_reports: null;
     over_18: boolean;
     parent_whitelist_status?:
-      | 'all_ads'
-      | 'house_only'
-      | 'no_ads'
-      | 'some_ads'
-      | 'promo_adult_nsfw'
-      | 'promo_all'
-      | 'promo_specified'
-      | 'promo_adult'
+      | "all_ads"
+      | "house_only"
+      | "no_ads"
+      | "some_ads"
+      | "promo_adult_nsfw"
+      | "promo_all"
+      | "promo_specified"
+      | "promo_adult"
       | null;
     permalink: string;
     pinned?: boolean;
@@ -1028,10 +1028,10 @@ export interface RedditPost {
           }[];
           prediction_status?:
             | null
-            | 'RESOLVED'
-            | 'CANCELLED'
-            | 'OPEN'
-            | 'CLOSED';
+            | "RESOLVED"
+            | "CANCELLED"
+            | "OPEN"
+            | "CLOSED";
           resolved_option_id?: null | string;
           total_stake_amount?: null | number;
           total_vote_count: number;
@@ -1045,13 +1045,13 @@ export interface RedditPost {
       | boolean;
     post_categories?: null;
     post_hint?:
-      | 'image'
-      | 'link'
-      | 'rich:video'
-      | 'self'
-      | 'hosted:video'
-      | 'video'
-      | 'gallery';
+      | "image"
+      | "link"
+      | "rich:video"
+      | "self"
+      | "hosted:video"
+      | "video"
+      | "gallery";
     preview?: {
       enabled: boolean;
       images: {
@@ -1126,7 +1126,7 @@ export interface RedditPost {
         hls_url: string;
         is_gif: boolean;
         scrubber_media_url: string;
-        transcoding_status: 'completed';
+        transcoding_status: "completed";
         width: number;
       };
     };
@@ -1134,25 +1134,25 @@ export interface RedditPost {
     promo_layout?: null;
     pwls?: null | number;
     quarantine: boolean;
-    removal_reason: null | 'legal';
+    removal_reason: null | "legal";
     removed_by?: null;
     removed_by_category?:
       | null
-      | 'deleted'
-      | 'reddit'
-      | 'moderator'
-      | 'copyright_takedown'
-      | 'content_takedown'
-      | 'automod_filtered'
-      | 'author'
-      | 'community_ops'
-      | 'anti_evil_ops';
+      | "deleted"
+      | "reddit"
+      | "moderator"
+      | "copyright_takedown"
+      | "content_takedown"
+      | "automod_filtered"
+      | "author"
+      | "community_ops"
+      | "anti_evil_ops";
     report_reasons: null;
     rpan_video?: {
       hls_url: string;
       scrubber_media_url: string;
     };
-    rte_mode?: 'markdown' | 'richtext';
+    rte_mode?: "markdown" | "richtext";
     saved: boolean;
     score: number;
     secure_media: null | {
@@ -1173,9 +1173,9 @@ export interface RedditPost {
         thumbnail_url?: string;
         thumbnail_width?: number | null;
         title?: string;
-        type?: 'video' | 'rich';
+        type?: "video" | "rich";
         url?: string;
-        version?: '1.0';
+        version?: "1.0";
         width?: number;
       };
       reddit_video?: {
@@ -1189,7 +1189,7 @@ export interface RedditPost {
         is_gif?: boolean;
         scrubber_media_url?: string;
         transcoding_message?: string;
-        transcoding_status: 'completed' | 'error';
+        transcoding_status: "completed" | "error";
         width?: number | null;
       };
       type?: string;
@@ -1213,30 +1213,30 @@ export interface RedditPost {
     subreddit_name_prefixed: string;
     subreddit_subscribers?: number;
     subreddit_type:
-      | 'public'
-      | 'user'
-      | 'restricted'
-      | 'archived'
-      | 'gold_restricted'
-      | 'employees_only';
+      | "public"
+      | "user"
+      | "restricted"
+      | "archived"
+      | "gold_restricted"
+      | "employees_only";
     suggested_sort:
       | null
-      | 'confidence'
-      | 'qa'
-      | 'new'
-      | 'top'
-      | 'controversial'
-      | 'old'
-      | 'random'
-      | 'live';
+      | "confidence"
+      | "qa"
+      | "new"
+      | "top"
+      | "controversial"
+      | "old"
+      | "random"
+      | "live";
     thumbnail: string | null;
     thumbnail_height?: number | null;
     thumbnail_width?: number | null;
     title: string;
-    top_awarded_type?: null | 'INACTIVE' | 'ACTIVE';
+    top_awarded_type?: null | "INACTIVE" | "ACTIVE";
     total_awards_received?: number;
     tournament_data?: {
-      currency: 'GAME_TOKENS';
+      currency: "GAME_TOKENS";
       name: string;
       predictions: {
         body: string;
@@ -1254,7 +1254,7 @@ export interface RedditPost {
           vote_count: number | null;
         }[];
         resolved_option_id: string | null;
-        status: 'RESOLVED' | 'OPEN' | 'CLOSED';
+        status: "RESOLVED" | "OPEN" | "CLOSED";
         title: string;
         total_stake_amount: number;
         total_vote_count: number;
@@ -1263,32 +1263,32 @@ export interface RedditPost {
         vote_updates_remained: null;
         voting_end_timestamp: number;
       }[];
-      status: 'CLOSED' | 'LIVE';
+      status: "CLOSED" | "LIVE";
       subreddit_id: string;
       theme_id:
-        | 'theme_1'
-        | 'theme_5'
-        | 'theme_4'
-        | 'theme_3'
-        | 'theme_2'
-        | 'theme_8'
-        | 'theme_6'
-        | 'theme_7';
+        | "theme_1"
+        | "theme_5"
+        | "theme_4"
+        | "theme_3"
+        | "theme_2"
+        | "theme_8"
+        | "theme_6"
+        | "theme_7";
       total_participants: number;
       tournament_id: string;
     } | null;
     treatment_tags?: (
-      | 'econ:render:lottie:redstar'
-      | 'econ:render:glow:ff0000'
-      | 'econ:render:bubble:flame'
-      | 'econ:render:lottie:bulb'
-      | 'econ:render:lottie:sunny2'
-      | 'econ:render:lottie:cutie'
-      | 'econ:render:lottie:heartbeat'
-      | 'econ:render:lottie:halloween2020'
-      | 'econ:render:lottie:santasnoo'
-      | 'econ:render:lottie:champagne'
-      | 'econ:render:lottie:sunny'
+      | "econ:render:lottie:redstar"
+      | "econ:render:glow:ff0000"
+      | "econ:render:bubble:flame"
+      | "econ:render:lottie:bulb"
+      | "econ:render:lottie:sunny2"
+      | "econ:render:lottie:cutie"
+      | "econ:render:lottie:heartbeat"
+      | "econ:render:lottie:halloween2020"
+      | "econ:render:lottie:santasnoo"
+      | "econ:render:lottie:champagne"
+      | "econ:render:lottie:sunny"
     )[];
     ups: number;
     upvote_ratio?: number;
@@ -1298,25 +1298,25 @@ export interface RedditPost {
     view_count: null;
     visited: boolean;
     whitelist_status?:
-      | 'all_ads'
-      | 'house_only'
-      | 'no_ads'
-      | 'promo_adult_nsfw'
-      | 'some_ads'
-      | 'promo_all'
-      | 'promo_specified'
-      | 'promo_adult'
+      | "all_ads"
+      | "house_only"
+      | "no_ads"
+      | "promo_adult_nsfw"
+      | "some_ads"
+      | "promo_all"
+      | "promo_specified"
+      | "promo_adult"
       | null;
     wls?: null | number;
   }[];
   disable_comments?: boolean;
-  discussion_type?: null | 'CHAT';
-  distinguished: null | 'moderator' | 'admin' | 'special';
+  discussion_type?: null | "CHAT";
+  distinguished: null | "moderator" | "admin" | "special";
   domain: string | null;
   domain_override?: null | string;
   downs?: number;
   edited: boolean | number;
-  embed_type?: null | 'scrape' | 'iframe';
+  embed_type?: null | "scrape" | "iframe";
   embed_url?: null | string;
   event_end?: number;
   event_is_live?: boolean;
@@ -1371,20 +1371,20 @@ export interface RedditPost {
   link_flair_css_class: null | string;
   link_flair_richtext?: {
     a?: string;
-    e: 'text' | 'emoji';
+    e: "text" | "emoji";
     t?: string;
     u?: string;
   }[];
   link_flair_template_id?: string | null;
   link_flair_text: null | string;
-  link_flair_text_color?: 'dark' | 'light' | null;
-  link_flair_type?: 'text' | 'richtext';
+  link_flair_text_color?: "dark" | "light" | null;
+  link_flair_type?: "text" | "richtext";
   live_audio?: {
     is_live: boolean;
     recording_dash_url?: string;
     recording_duration_seconds?: number;
     recording_fallback_url?: string;
-    recording_hls_url?: '';
+    recording_hls_url?: "";
     recording_status?: number;
     room_id: string;
     room_status?: number;
@@ -1419,16 +1419,16 @@ export interface RedditPost {
         | string
         | {
             height: number;
-            time?: '00:13:41' | '00:06:50.500' | '00:20:31.500';
+            time?: "00:13:41" | "00:06:50.500" | "00:20:31.500";
             url: string;
             width: number;
-            yt$name: 'default' | 'hqdefault' | 'start' | 'middle' | 'end';
+            yt$name: "default" | "hqdefault" | "start" | "middle" | "end";
           }[];
       thumbnail_width?: number | null;
       title?: string;
-      type?: 'video' | 'rich';
+      type?: "video" | "rich";
       url?: string;
-      version?: '1.0';
+      version?: "1.0";
       width?: number;
     };
     reddit_video?: {
@@ -1444,7 +1444,7 @@ export interface RedditPost {
       scrubber_media_url?: string;
       thumbnail_url?: string;
       transcoding_message?: string;
-      transcoding_status: 'completed' | 'error';
+      transcoding_status: "completed" | "error";
       width?: number | null;
     };
     reddit_videos?: {
@@ -1455,7 +1455,7 @@ export interface RedditPost {
       hls_url: string;
       is_gif: boolean;
       scrubber_media_url: string;
-      transcoding_status: 'completed';
+      transcoding_status: "completed";
       width: number;
     };
     type?: string;
@@ -1471,11 +1471,11 @@ export interface RedditPost {
   media_metadata?: null | {
     [key: string]: {
       dashUrl?: string;
-      e?: 'Image' | 'RedditVideo' | 'AnimatedImage';
+      e?: "Image" | "RedditVideo" | "AnimatedImage";
       hlsUrl?: string;
       id?: string;
       isGif?: boolean;
-      m?: 'image/jpg' | 'image/png' | 'image/gif' | 'image/jpeg';
+      m?: "image/jpg" | "image/png" | "image/gif" | "image/jpeg";
       o?: {
         u: string;
         x: number;
@@ -1493,7 +1493,7 @@ export interface RedditPost {
         x: number;
         y: number;
       };
-      status: 'valid' | 'failed' | 'unprocessed';
+      status: "valid" | "failed" | "unprocessed";
       x?: number;
       y?: number;
     };
@@ -1517,14 +1517,14 @@ export interface RedditPost {
   };
   over_18: boolean;
   parent_whitelist_status?:
-    | 'all_ads'
-    | 'promo_adult_nsfw'
-    | 'house_only'
-    | 'promo_all'
-    | 'no_ads'
-    | 'some_ads'
-    | 'promo_specified'
-    | 'promo_adult'
+    | "all_ads"
+    | "promo_adult_nsfw"
+    | "house_only"
+    | "promo_all"
+    | "no_ads"
+    | "some_ads"
+    | "promo_specified"
+    | "promo_adult"
     | null;
   permalink: string;
   pinned?: boolean;
@@ -1538,7 +1538,7 @@ export interface RedditPost {
           total_stake_amount?: number;
           vote_count?: number;
         }[];
-        prediction_status?: null | 'RESOLVED' | 'CANCELLED' | 'OPEN' | 'CLOSED';
+        prediction_status?: null | "RESOLVED" | "CANCELLED" | "OPEN" | "CLOSED";
         resolved_option_id?: null | string;
         total_stake_amount?: null | number;
         total_vote_count: number;
@@ -1551,13 +1551,13 @@ export interface RedditPost {
     | boolean;
   post_categories?: null;
   post_hint?:
-    | 'link'
-    | 'image'
-    | 'rich:video'
-    | 'self'
-    | 'video'
-    | 'hosted:video'
-    | 'gallery';
+    | "link"
+    | "image"
+    | "rich:video"
+    | "self"
+    | "video"
+    | "hosted:video"
+    | "gallery";
   preview?: {
     enabled?: boolean;
     images: {
@@ -1632,34 +1632,34 @@ export interface RedditPost {
       hls_url: string;
       is_gif: boolean;
       scrubber_media_url: string;
-      transcoding_status: 'completed';
+      transcoding_status: "completed";
       width: number;
     };
   };
   previous_visits?: number[];
   priority_id?: null;
   product_ids?: [];
-  promo_layout?: null | 'SPOTLIGHT_VIDEO' | 'PRODUCT';
+  promo_layout?: null | "SPOTLIGHT_VIDEO" | "PRODUCT";
   promoted?: boolean;
-  promoted_by?: null | number | 'TheGameAwards';
+  promoted_by?: null | number | "TheGameAwards";
   promoted_display_name?: null | string;
   promoted_url?: null | string;
   pwls?: null | number;
   quarantine?: boolean;
-  removal_reason?: null | 'legal';
+  removal_reason?: null | "legal";
   removed?: boolean;
   removed_by?: null;
   removed_by_category?:
     | null
-    | 'deleted'
-    | 'reddit'
-    | 'moderator'
-    | 'author'
-    | 'content_takedown'
-    | 'automod_filtered'
-    | 'copyright_takedown'
-    | 'community_ops'
-    | 'anti_evil_ops';
+    | "deleted"
+    | "reddit"
+    | "moderator"
+    | "author"
+    | "content_takedown"
+    | "automod_filtered"
+    | "copyright_takedown"
+    | "community_ops"
+    | "anti_evil_ops";
   report_reasons?: null | [];
   retrieved_on?: number;
   retrieved_utc?: number;
@@ -1667,7 +1667,7 @@ export interface RedditPost {
     hls_url: string;
     scrubber_media_url: string;
   };
-  rte_mode?: 'markdown' | 'richtext';
+  rte_mode?: "markdown" | "richtext";
   saved?: boolean;
   score: number | null;
   secure_media?: null | {
@@ -1690,9 +1690,9 @@ export interface RedditPost {
       thumbnail_url?: string;
       thumbnail_width?: number | null;
       title?: string;
-      type?: 'video' | 'rich';
+      type?: "video" | "rich";
       url?: string;
-      version?: '1.0';
+      version?: "1.0";
       width?: number;
     };
     reddit_video?: {
@@ -1706,7 +1706,7 @@ export interface RedditPost {
       is_gif?: boolean;
       scrubber_media_url?: string;
       transcoding_message?: string;
-      transcoding_status: 'completed' | 'error';
+      transcoding_status: "completed" | "error";
       width?: number | null;
     };
     type?: string;
@@ -1734,24 +1734,24 @@ export interface RedditPost {
   subreddit_name_prefixed?: string;
   subreddit_subscribers?: number;
   subreddit_type?:
-    | 'public'
-    | 'restricted'
-    | 'archived'
-    | 'user'
-    | 'private'
-    | 'gold_restricted'
-    | 'gold_only'
-    | 'employees_only';
+    | "public"
+    | "restricted"
+    | "archived"
+    | "user"
+    | "private"
+    | "gold_restricted"
+    | "gold_only"
+    | "employees_only";
   suggested_sort?:
     | null
-    | 'new'
-    | 'confidence'
-    | 'top'
-    | 'old'
-    | 'qa'
-    | 'controversial'
-    | 'random'
-    | 'live';
+    | "new"
+    | "confidence"
+    | "top"
+    | "old"
+    | "qa"
+    | "controversial"
+    | "random"
+    | "live";
   third_party_trackers?: string[] | null;
   third_party_tracking?: null | string;
   third_party_tracking_2?: null | string;
@@ -1759,10 +1759,10 @@ export interface RedditPost {
   thumbnail_height?: null | number;
   thumbnail_width?: null | number;
   title: string;
-  top_awarded_type?: null | 'INACTIVE' | 'ACTIVE';
+  top_awarded_type?: null | "INACTIVE" | "ACTIVE";
   total_awards_received?: number;
   tournament_data?: {
-    currency: 'GAME_TOKENS' | 'COINS';
+    currency: "GAME_TOKENS" | "COINS";
     name: string;
     predictions?: {
       body: string;
@@ -1773,14 +1773,14 @@ export interface RedditPost {
       is_spoiler: boolean;
       options: {
         id: string;
-        image_url: null | 'https://google.com';
+        image_url: null | "https://google.com";
         text: string;
         total_amount: number | null;
         user_amount: null;
         vote_count: number | null;
       }[];
       resolved_option_id: string | null;
-      status: 'RESOLVED' | 'OPEN' | 'CLOSED';
+      status: "RESOLVED" | "OPEN" | "CLOSED";
       title: string;
       total_stake_amount: number;
       total_vote_count: number;
@@ -1789,34 +1789,34 @@ export interface RedditPost {
       vote_updates_remained: null;
       voting_end_timestamp: number;
     }[];
-    status: 'CLOSED' | 'LIVE';
+    status: "CLOSED" | "LIVE";
     subreddit_id: string;
     theme_id:
-      | 'theme_1'
-      | 'theme_4'
-      | 'theme_7'
-      | 'theme_3'
-      | 'theme_5'
-      | 'theme_6'
-      | 'theme_2'
-      | 'theme_8';
+      | "theme_1"
+      | "theme_4"
+      | "theme_7"
+      | "theme_3"
+      | "theme_5"
+      | "theme_6"
+      | "theme_2"
+      | "theme_8";
     total_participants: number;
     tournament_id: string;
   } | null;
   treatment_tags?: (
-    | 'econ:render:lottie:redstar'
-    | 'econ:render:lottie:bulb'
-    | 'econ:render:lottie:sunny2'
-    | 'econ:render:lottie:cutie'
-    | 'econ:render:lottie:heartbeat'
-    | 'econ:render:glow:ff0000'
-    | 'econ:render:bubble:flame'
-    | 'econ:render:lottie:halloween2020'
-    | 'econ:render:lottie:santasnoo'
-    | 'econ:render:lottie:champagne'
-    | 'econ:render:lottie:sunny'
+    | "econ:render:lottie:redstar"
+    | "econ:render:lottie:bulb"
+    | "econ:render:lottie:sunny2"
+    | "econ:render:lottie:cutie"
+    | "econ:render:lottie:heartbeat"
+    | "econ:render:glow:ff0000"
+    | "econ:render:bubble:flame"
+    | "econ:render:lottie:halloween2020"
+    | "econ:render:lottie:santasnoo"
+    | "econ:render:lottie:champagne"
+    | "econ:render:lottie:sunny"
   )[];
-  unrepliable_reason?: 'BLOCK';
+  unrepliable_reason?: "BLOCK";
   ups?: number;
   upvote_ratio?: number;
   url: string | null;
@@ -1825,14 +1825,14 @@ export interface RedditPost {
   view_count?: null;
   visited?: boolean;
   whitelist_status?:
-    | 'all_ads'
-    | 'promo_adult_nsfw'
-    | 'house_only'
-    | 'promo_all'
-    | 'no_ads'
-    | 'some_ads'
-    | 'promo_specified'
-    | 'promo_adult'
+    | "all_ads"
+    | "promo_adult_nsfw"
+    | "house_only"
+    | "promo_all"
+    | "no_ads"
+    | "some_ads"
+    | "promo_specified"
+    | "promo_adult"
     | null;
   wls?: null | number;
 }

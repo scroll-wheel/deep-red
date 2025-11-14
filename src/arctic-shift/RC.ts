@@ -2,22 +2,22 @@ export interface RedditComment {
   _meta?: {
     corrupted_body?: string;
     is_edited?: boolean;
-    note?: 'no_2nd_retrieval' | 'initially_unavailable';
-    removal_type?: 'deleted' | 'removed' | 'removed by reddit';
+    note?: "no_2nd_retrieval" | "initially_unavailable";
+    removal_type?: "deleted" | "removed" | "removed by reddit";
     retrieved_2nd_on?: number;
     was_deleted_later?: boolean;
     was_initially_deleted?: boolean;
   };
   all_awardings?: {
     award_sub_type?:
-      | 'GLOBAL'
-      | 'MODERATOR'
-      | 'COMMUNITY'
-      | 'APPRECIATION'
-      | 'PREMIUM'
-      | 'GROUP'
-      | 'CHAT_REACTION';
-    award_type: 'global' | 'community' | 'moderator';
+      | "GLOBAL"
+      | "MODERATOR"
+      | "COMMUNITY"
+      | "APPRECIATION"
+      | "PREMIUM"
+      | "GROUP"
+      | "CHAT_REACTION";
+    award_type: "global" | "community" | "moderator";
     awardings_required_to_grant_benefits?: null | number;
     coin_price: number;
     coin_reward: number;
@@ -27,7 +27,7 @@ export interface RedditComment {
     description: string | null;
     end_date?: null | number;
     giver_coin_reward?: null | number;
-    icon_format?: null | 'PNG' | 'APNG' | 'JPG';
+    icon_format?: null | "PNG" | "APNG" | "JPG";
     icon_height: number;
     icon_url: string;
     icon_width: number;
@@ -58,7 +58,7 @@ export interface RedditComment {
       [key: string]: {
         awardings_required: number;
         icon: {
-          format: 'PNG' | 'APNG';
+          format: "PNG" | "APNG";
           height: number;
           url: string;
           width: number;
@@ -88,13 +88,13 @@ export interface RedditComment {
   archived?: boolean;
   associated_award?: null | {
     award_sub_type:
-      | 'GLOBAL'
-      | 'COMMUNITY'
-      | 'APPRECIATION'
-      | 'PREMIUM'
-      | 'MODERATOR'
-      | 'GROUP';
-    award_type: 'global' | 'community' | 'moderator';
+      | "GLOBAL"
+      | "COMMUNITY"
+      | "APPRECIATION"
+      | "PREMIUM"
+      | "MODERATOR"
+      | "GROUP";
+    award_type: "global" | "community" | "moderator";
     awardings_required_to_grant_benefits?: null | number;
     coin_price: number;
     coin_reward: number | null;
@@ -104,7 +104,7 @@ export interface RedditComment {
     description: string;
     end_date: null;
     giver_coin_reward?: null | number;
-    icon_format?: null | 'PNG' | 'APNG';
+    icon_format?: null | "PNG" | "APNG";
     icon_height: number;
     icon_url: string;
     icon_width: number;
@@ -135,7 +135,7 @@ export interface RedditComment {
       [key: string]: {
         awardings_required: number;
         icon: {
-          format: 'PNG' | 'APNG';
+          format: "PNG" | "APNG";
           height: number;
           url: string;
           width: number;
@@ -166,14 +166,14 @@ export interface RedditComment {
   author_flair_css_class: null | string;
   author_flair_richtext?: {
     a?: string;
-    e: 'text' | 'emoji';
+    e: "text" | "emoji";
     t?: string;
     u?: string;
   }[];
   author_flair_template_id?: null | string;
   author_flair_text: null | string;
-  author_flair_text_color?: null | 'dark' | 'light' | '';
-  author_flair_type?: 'text' | 'richtext';
+  author_flair_text_color?: null | "dark" | "light" | "";
+  author_flair_type?: "text" | "richtext";
   author_fullname?: string | null;
   author_is_blocked?: boolean;
   author_patreon_flair?: boolean;
@@ -189,24 +189,24 @@ export interface RedditComment {
   collapsed_because_crowd_control?: null;
   collapsed_reason?:
     | null
-    | 'comment score below threshold'
-    | 'potentially toxic'
-    | 'may be sensitive content'
-    | 'potentially toxic content';
-  collapsed_reason_code?: null | 'DELETED' | 'LOW_SCORE' | 'POTENTIALLY_TOXIC';
-  comment_type?: null | 'PREDICTION';
+    | "comment score below threshold"
+    | "potentially toxic"
+    | "may be sensitive content"
+    | "potentially toxic content";
+  collapsed_reason_code?: null | "DELETED" | "LOW_SCORE" | "POTENTIALLY_TOXIC";
+  comment_type?: null | "PREDICTION";
   controversiality: number;
   created?: number | null;
   created_utc: number | string;
-  distinguished: null | 'moderator' | 'admin' | 'special';
+  distinguished: null | "moderator" | "admin" | "special";
   downs?: number;
   editable?: boolean;
   edited: boolean | number;
   expression_asset_data?: {
     [key: string]: {
       avatar: {
-        e: 'Image';
-        m: 'image/png';
+        e: "Image";
+        m: "image/png";
         s: {
           u: string;
           x: number;
@@ -214,34 +214,34 @@ export interface RedditComment {
         };
       };
       expression: {
-        e: ' Image';
-        l: 'FRONT' | 'BACK';
-        m: 'image/png';
+        e: " Image";
+        l: "FRONT" | "BACK";
+        m: "image/png";
         n:
-          | 'fire'
-          | 'heart'
-          | 'cry'
-          | 'winner'
-          | 'bravo'
-          | 'starstruck'
-          | 'holo_card'
-          | 'laugh'
-          | 'dizziness'
-          | 'clown'
-          | 'take_my_energy'
-          | 'nani'
-          | 'webman'
-          | 'spooky'
-          | 'cameras';
+          | "fire"
+          | "heart"
+          | "cry"
+          | "winner"
+          | "bravo"
+          | "starstruck"
+          | "holo_card"
+          | "laugh"
+          | "dizziness"
+          | "clown"
+          | "take_my_energy"
+          | "nani"
+          | "webman"
+          | "spooky"
+          | "cameras";
         s: {
           u: string;
           x: number;
           y: number;
         };
       }[];
-      perspective: 'FULL_BODY' | 'CROPPED';
-      position: 'CENTER' | 'LEFT';
-      size: 'SIZE_1_X_2' | 'SIZE_1_X_1';
+      perspective: "FULL_BODY" | "CROPPED";
+      position: "CENTER" | "LEFT";
+      size: "SIZE_1_X_2" | "SIZE_1_X_1";
     };
   };
   gilded: number;
@@ -258,10 +258,10 @@ export interface RedditComment {
   locked?: boolean;
   media_metadata?: {
     [key: string]: {
-      e?: 'AnimatedImage' | 'Image';
+      e?: "AnimatedImage" | "Image";
       ext?: string;
       id?: string;
-      m?: 'image/gif' | 'image/png' | 'image/jpeg';
+      m?: "image/gif" | "image/png" | "image/jpeg";
       p?: {
         u: string;
         x: number;
@@ -274,8 +274,8 @@ export interface RedditComment {
         x: number;
         y: number;
       };
-      status: 'valid' | 'unprocessed' | 'invalid';
-      t?: 'sticker' | 'emoji' | 'giphy';
+      status: "valid" | "unprocessed" | "invalid";
+      t?: "sticker" | "emoji" | "giphy";
     };
   };
   mod_note?: null;
@@ -289,13 +289,13 @@ export interface RedditComment {
   permalink?: string;
   permalink_url?: string;
   quarantined?: boolean;
-  removal_reason?: null | 'legal';
+  removal_reason?: null | "legal";
   removed?: boolean;
-  replies?: '' | null;
+  replies?: "" | null;
   report_reasons?: null | [];
   retrieved_on?: number | null;
   retrieved_utc?: number;
-  rte_mode?: 'markdown' | 'richtext';
+  rte_mode?: "markdown" | "richtext";
   saved?: boolean | null;
   score: number | null;
   score_hidden?: boolean;
@@ -307,16 +307,16 @@ export interface RedditComment {
   subreddit_id: string;
   subreddit_name_prefixed?: string;
   subreddit_type?:
-    | 'public'
-    | 'restricted'
-    | 'user'
-    | 'archived'
-    | 'private'
-    | 'gold_restricted';
+    | "public"
+    | "restricted"
+    | "user"
+    | "archived"
+    | "private"
+    | "gold_restricted";
   top_awarded_type?: null;
   total_awards_received?: number;
   treatment_tags?: string[];
-  unrepliable_reason?: null | 'NEAR_BLOCKER';
+  unrepliable_reason?: null | "NEAR_BLOCKER";
   ups?: number;
   user_reports?: [] | null;
 }
