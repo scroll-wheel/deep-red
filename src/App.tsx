@@ -1,7 +1,7 @@
 import Comments from "@/pages/Comments";
 import Top from "@/pages/Top";
 import Empty from "@/pages/Empty";
-import { BrowserRouter, Routes, Route, NavLink } from "react-router";
+import { HashRouter, Routes, Route, NavLink } from "react-router";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/mode-toggle";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -18,7 +18,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-        <BrowserRouter>
+        <HashRouter>
           <nav className="bg-background flex md:grid grid-cols-[1fr_4fr_1fr] p-3 pb-1.5 sticky z-2 top-0 border-b">
             <NavLink to="/" className="flex items-center">
               <span className="avatar"></span>
@@ -50,7 +50,7 @@ function App() {
               />
             </Routes>
           </main>
-        </BrowserRouter>
+        </HashRouter>
       </ThemeProvider>
     </QueryClientProvider>
   );
