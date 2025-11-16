@@ -16,7 +16,12 @@ function RFM({ plaintext }: { plaintext: string }) {
           a(props) {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
             const { node, className, ...rest } = props;
-            return <a className={cn(className, commonClasses)} {...rest} />;
+            return (
+              <a
+                className={cn(className, commonClasses, "underline")}
+                {...rest}
+              />
+            );
           },
           blockquote(props) {
             // eslint-disable-next-line @typescript-eslint/no-unused-vars

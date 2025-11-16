@@ -329,7 +329,7 @@ function PostHelper({
         ) : p.url ? (
           <a
             target="_blank"
-            className="relative z-1 flex justify-between"
+            className="relative z-1 flex justify-between underline"
             href={href(p)}
           >
             <span className="line-clamp-1">{p.url.toString()}</span>
