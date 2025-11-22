@@ -8,23 +8,21 @@ import { PullPush } from "@/lib/query";
 
 function Top() {
   const params = useParams();
-  // if (typeof params.year !== "undefined" && isNaN(parseInt(params.year))) {
-  //   return <div>Invalid year</div>;
-  // }
-  // if (typeof params.month !== "undefined" && isNaN(parseInt(params.month))) {
-  //   return <div>Invalid month</div>;
-  // }
-  // if (typeof params.day !== "undefined" && isNaN(parseInt(params.day))) {
-  //   return <div>Invalid day</div>;
-  // }
 
   const year = typeof params.year === "undefined" ? undefined : +params.year;
   const month = typeof params.month === "undefined" ? undefined : +params.month;
   const day = typeof params.day === "undefined" ? undefined : +params.day;
 
+  const valid_year = !(typeof year !== "undefined" && isNaN(year));
+  const valid_month = !(typeof month !== "undefined" && isNaN(month));
+  const valid_day = !(typeof day !== "undefined" && isNaN(day));
+
   const postsQuery = useQuery({
     queryKey: ["top", params.subreddit!, year, month, day],
-    queryFn: PullPush.queryTopPosts(params.subreddit!, year, month, day),
+    queryFn:
+      valid_year && valid_month && valid_day
+        ? PullPush.queryTopPosts(params.subreddit!, year, month, day)
+        : () => [],
   });
 
   useQueries({
@@ -37,6 +35,16 @@ function Top() {
         })
       : [],
   });
+
+  if (!valid_year) {
+    return <div>Invalid year</div>;
+  }
+  if (!valid_month) {
+    return <div>Invalid month</div>;
+  }
+  if (!valid_day) {
+    return <div>Invalid day</div>;
+  }
 
   if (postsQuery.isPending) return "Loading...";
 

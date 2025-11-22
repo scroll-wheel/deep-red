@@ -5,6 +5,7 @@ import { HashRouter, Routes, Route, NavLink } from "react-router";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/mode-toggle";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Form from "@/components/Form";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,8 +27,10 @@ function App() {
                 deep red
               </h1>
             </NavLink>
-            <div></div>
-            <ModeToggle />
+            <Form />
+            <div className="ml-auto">
+              <ModeToggle />
+            </div>
           </nav>
           <main className="px-3 md:p-0 md:w-3xl m-auto">
             <Routes>
